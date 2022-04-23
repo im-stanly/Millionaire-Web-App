@@ -17,8 +17,6 @@ public class MillionairesClient {
                 MillionairesQuestionDto.class,
                 difficulty);
 
-        //List<Question> nothing = getQuestionsList();
-
         return ApiModel.builder()
                 .category(apiModel.getResults().get(0).category)
                 .difficulty(apiModel.getResults().get(0).difficulty)
