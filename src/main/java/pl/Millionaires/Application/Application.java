@@ -1,13 +1,13 @@
-package pl.millionaires.App;
+package pl.Millionaires.Application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MillionairesApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MillionairesApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

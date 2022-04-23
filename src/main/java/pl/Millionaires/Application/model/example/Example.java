@@ -1,5 +1,4 @@
-
-package pl.millionaires.App.model.example;
+package pl.Millionaires.Application.model.example;
 
 import java.util.List;
 import javax.annotation.Generated;

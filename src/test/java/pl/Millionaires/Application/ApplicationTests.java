@@ -1,10 +1,10 @@
-package pl.millionaires.App;
+package pl.Millionaires.Application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AppApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,12 @@
-
-package pl.millionaires.App.model.example;
+package pl.Millionaires.Application.model.example;
 
 import lombok.Getter;
 
 import java.util.List;
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
 @Getter
+@Generated("jsonschema2pojo")
 public class Result {
 
     public String category;
@@ -22,3 +21,4 @@ public class Result {
 
     public List<String> incorrect_answers = null;
 }
+

@@ -1,12 +1,13 @@
-package pl.millionaires.App.gui;
+package pl.Millionaires.Application.gui;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import pl.millionaires.App.model.Question;
+import pl.Millionaires.Application.model.Question;
 
 public class InitPaneHorizontal extends HorizontalLayout {
+
     public InitPaneHorizontal(Question question){
         Button main = new Button(question.getQuestion());
 
@@ -23,7 +24,7 @@ public class InitPaneHorizontal extends HorizontalLayout {
         add(tmp3, tmp4);
     }
     public InitPaneHorizontal(){
-        Span span = new Span("Question text");
+        Span span = new Span("Miejsce na tresc pytania");
         add(span);
 
         Button tmp = new Button(" bbbbb");

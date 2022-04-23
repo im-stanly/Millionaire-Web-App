@@ -1,23 +1,21 @@
-package pl.millionaires.App.webclient;
+package pl.Millionaires.Application.webclient;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.millionaires.App.model.ApiModel;
-import pl.millionaires.App.model.Question;
-import pl.millionaires.App.webclient.dto.MillionairesQuestionQuestionDto;
+import pl.Millionaires.Application.model.ApiModel;
+import pl.Millionaires.Application.model.Question;
+import pl.Millionaires.Application.webclient.dto.MillionairesQuestionDto;
 
 import java.util.LinkedList;
 import java.util.List;
 
-@Component
 public class MillionairesClient {
     private static final String QUESTION_URL = "https://opentdb.com/api.php";
     private RestTemplate restTemplate = new RestTemplate();
 
     public ApiModel getQuestion(String difficulty){
-        MillionairesQuestionQuestionDto apiModel = callGetMethod("?amount=2&difficulty={difficulty}&type=multiple",
-                MillionairesQuestionQuestionDto.class,
-                 difficulty);
+        MillionairesQuestionDto apiModel = callGetMethod("?amount=2&difficulty={difficulty}&type=multiple",
+                MillionairesQuestionDto.class,
+                difficulty);
 
         //List<Question> nothing = getQuestionsList();
 
@@ -32,9 +30,9 @@ public class MillionairesClient {
     private List<Question> getPartQuestionsList(String difficulty, int numberOfQuestions){
         List<Question> oneDifficultyQuestionsList = new LinkedList<>();
 
-        MillionairesQuestionQuestionDto apiModel = callGetMethod("?amount={numberOfQuestions}&difficulty={difficulty}&type=multiple",
-                MillionairesQuestionQuestionDto.class,
-                 numberOfQuestions, difficulty);
+        MillionairesQuestionDto apiModel = callGetMethod("?amount={numberOfQuestions}&difficulty={difficulty}&type=multiple",
+                MillionairesQuestionDto.class,
+                numberOfQuestions, difficulty);
 
         for (int i = 0; i < numberOfQuestions; i++){
             List<String> tmp = apiModel.getResults().get(i).incorrect_answers;
@@ -65,12 +63,3 @@ public class MillionairesClient {
                 responseType, objects);
     }
 }
-// SPOSOB NA WYBIERANIE LOSOWEGO USTAWIENIA PYTAN wiec zaczniemy od randomowego indeksu w liscie a bedziemy kontrolowac aby nie wyjsc poza liste ale tez aby wykorzystac każdy element listy tylko raz
-//        int random, counter = 0;
-//        while (counter < 4){
-//            // button dostanie element lista.get(random)
-//            if(random == 3)
-//                random = 0;
-//            random++;
-//            counter++;
-//        }
