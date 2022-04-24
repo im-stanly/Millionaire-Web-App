@@ -23,7 +23,7 @@ public class InitPane extends VerticalLayout{
     private List<Question> questionsList = millionairesClient.getQuestionsList();
     private HorizontalLayout horizontalLayout = new HorizontalLayout();
     private VerticalLayout verticalLayout = new VerticalLayout();
-    private static int counter = 0;
+    private static int indexCounter = 0, usedQuestionCounter = 0;
 
     public InitPane(){
         mainImage = new Image("https://static.wikia.nocookie.net/logopedia/images/d/d8/WWTBAM_Logo_2011.png", "Unfortunately we can't display Icon :// ");
@@ -44,18 +44,24 @@ public class InitPane extends VerticalLayout{
         answer2 = addButtonProperties(answer2, question);
         answer3 = addButtonProperties(answer3, question);
         answer4 = addButtonProperties(answer4, question);
-        
+        System.out.println(question.getCorrectAnswer());
+
         horizontalLayout.add(answer1, answer2, answer3, answer4);
         horizontalLayout.setJustifyContentMode(JustifyContentMode.CENTER);
 
         return horizontalLayout;
     }
-    public void buttonEvent(Button o, Question q) {
+    private void buttonEvent(Button o, Question q) {
         Button tmp = o;
         if (o.equals(rememberLastClickedButton)) {
             if((q.getCorrectAnswer()).equals(o.getText().substring(3))) {
                 o.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
                 horizontalLayout.replace(tmp, o);
+                Image oldImage = mainImage;
+                mainImage = new Image("https://c.tenor.com/773Qu5kPwucAAAAM/good-answer-family-feud-canada.gif", "Unfortunately we can't display Icon :// ");
+                mainImage.setWidth(292, Unit.PIXELS);
+                mainImage.setHeight(292, Unit.PIXELS);
+                verticalLayout.replace(oldImage, mainImage);
             }
             else{
                 o.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
@@ -81,13 +87,32 @@ public class InitPane extends VerticalLayout{
     }
     private Button addButtonProperties(Button button, Question question){
         if (answer1 != null && answer1.equals(button))
-            counter = 0;
-        Button tmp = new Button((char)(counter + 65) +". " + question.getAllAnswers().get(counter));
+            indexCounter = 0;
+        Button tmp = new Button((char)(indexCounter + 65) +". " + question.getAllAnswers().get(indexCounter));
         tmp.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_CONTRAST);
         tmp.addClickListener(e -> buttonEvent(e.getSource(), question));
-        counter++;
+        indexCounter++;
 
         return tmp;
+    }
+    private void nextQuestion(){
+        if (usedQuestionCounter >= 10 ){
+
+        }
+        else{
+            Image remImage = mainImage;
+            mainImage = new Image("https://static.wikia.nocookie.net/logopedia/images/d/d8/WWTBAM_Logo_2011.png", "Unfortunately we can't display Icon :// ");
+            horizontalLayout.replace(remImage, mainImage);
+
+            Span rememberTitle = questionText;
+            questionText = new Span(questionsList.get(usedQuestionCounter++).getQuestion());
+            questionText.getElement().getThemeList().add("badge success");
+            questionText.setSizeFull();
+
+            verticalLayout.replace(rememberTitle, questionText);
+
+
+        }
     }
 
 }

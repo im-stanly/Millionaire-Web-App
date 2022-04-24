@@ -7,6 +7,7 @@ import pl.Millionaires.Application.webclient.dto.MillionairesQuestionDto;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class MillionairesClient {
     private static final String QUESTION_URL = "https://opentdb.com/api.php";
@@ -34,14 +35,14 @@ public class MillionairesClient {
 
         for (int i = 0; i < numberOfQuestions; i++){
             List<String> tmp = apiModel.getResults().get(i).incorrect_answers;
-            tmp.add(apiModel.getResults().get(i).correct_answer);
+            tmp.add(new Random().nextInt(4), apiModel.getResults().get(i).correct_answer);
 
             oneDifficultyQuestionsList.add(new Question(
                     apiModel.getResults().get(i).category,
                     apiModel.getResults().get(i).difficulty,
                     apiModel.getResults().get(i).question,
                     apiModel.getResults().get(i).correct_answer,
-                    tmp
+                    tmp // All answers
             ));
         }
 
