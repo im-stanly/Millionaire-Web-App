@@ -38,11 +38,11 @@ public class MillionairesClient {
             tmp.add(new Random().nextInt(4), apiModel.getResults().get(i).correct_answer);
 
             oneDifficultyQuestionsList.add(new Question(
-                    apiModel.getResults().get(i).category,
-                    apiModel.getResults().get(i).difficulty,
-                    apiModel.getResults().get(i).question,
-                    apiModel.getResults().get(i).correct_answer,
-                    tmp // All answers
+                apiModel.getResults().get(i).category,
+                apiModel.getResults().get(i).difficulty,
+                apiModel.getResults().get(i).question,
+                apiModel.getResults().get(i).correct_answer,
+                tmp // All answers
             ));
         }
 
