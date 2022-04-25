@@ -5,7 +5,6 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -21,7 +20,7 @@ public class InitPane extends VerticalLayout{
     private MillionairesClient millionairesClient = new MillionairesClient();
     private Button answer1 = null, answer2 = null, answer3 = null, answer4 = null, rememberLastClickedButton = null;
     private List<Question> questionsList = millionairesClient.getQuestionsList();
-    private HorizontalLayout horizontalLayout = new HorizontalLayout(), horizontalLayoutMain = new HorizontalLayout();
+    private HorizontalLayout horizontalLayout = new HorizontalLayout();
     private VerticalLayout verticalLayout = new VerticalLayout();
     private static int indexCounter = 0, usedQuestionCounter = 0;
 
