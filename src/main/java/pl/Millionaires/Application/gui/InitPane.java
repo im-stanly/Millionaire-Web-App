@@ -27,7 +27,6 @@ public class InitPane extends VerticalLayout{
 
     public InitPane(){
         nextQuestion();
-
         add(verticalLayout, horizontalLayout);
     }
     private HorizontalLayout addButtons(Question question){
@@ -35,7 +34,6 @@ public class InitPane extends VerticalLayout{
         answer2 = addButtonProperties(answer2, question);
         answer3 = addButtonProperties(answer3, question);
         answer4 = addButtonProperties(answer4, question);
-        System.out.println(question.getCorrectAnswer());
 
         horizontalLayout.add(answer1, answer2, answer3, answer4);
         horizontalLayout.setJustifyContentMode(JustifyContentMode.CENTER);
@@ -46,13 +44,18 @@ public class InitPane extends VerticalLayout{
         Button tmp = o;
         if (o.equals(rememberLastClickedButton)) {
             if((q.getCorrectAnswer()).equals(o.getText().substring(3))) {
+
                 o.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
                 horizontalLayout.replace(tmp, o);
+
                 Image oldImage = mainImage;
                 mainImage = setImageSize("https://c.tenor.com/773Qu5kPwucAAAAM/good-answer-family-feud-canada.gif");
-
                 verticalLayout.replace(oldImage, mainImage);
+
                 Button nextQuestionButton = new Button( usedQuestionCounter + "/10 good answers. " + " Go to next question!");
+
+                if (usedQuestionCounter >= 10)
+                    nextQuestionButton.setText("10/10 good answers, You win!");
                 nextQuestionButton.addClickListener(e -> nextQuestion());
                 verticalLayout.add(nextQuestionButton);
             }
@@ -99,7 +102,6 @@ public class InitPane extends VerticalLayout{
                 horizontalLayout.removeAll();
                 verticalLayout.removeAll();
             }
-
             mainImage = setImageSize("https://static.wikia.nocookie.net/logopedia/images/d/d8/WWTBAM_Logo_2011.png");
 
             questionText = new Span(questionsList.get(usedQuestionCounter).getQuestion());
