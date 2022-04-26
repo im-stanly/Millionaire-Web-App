@@ -25,6 +25,10 @@ public class InitPane extends VerticalLayout{
     private static int indexCounter = 0, usedQuestionCounter = 0;
 
     public InitPane(){
+        horizontalLayout.removeAll();
+        verticalLayout.removeAll();
+        removeAll();
+
         nextQuestion();
         add(verticalLayout, horizontalLayout);
     }

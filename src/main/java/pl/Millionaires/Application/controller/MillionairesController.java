@@ -7,7 +7,7 @@ public class MillionairesController {
     private MillionairesClient millionairesClient;
 
     @GetMapping("/question")
-    public void startGame(){
+    public void showQuestion(){
         millionairesClient.getQuestion("easy");
     }
 }
