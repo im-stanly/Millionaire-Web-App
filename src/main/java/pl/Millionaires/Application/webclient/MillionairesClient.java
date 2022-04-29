@@ -1,5 +1,6 @@
 package pl.Millionaires.Application.webclient;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.Millionaires.Application.model.ApiModel;
 import pl.Millionaires.Application.model.Question;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+@Component
 public class MillionairesClient {
     private static final String QUESTION_URL = "https://opentdb.com/api.php";
     private RestTemplate restTemplate = new RestTemplate();

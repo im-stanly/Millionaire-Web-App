@@ -10,9 +10,9 @@ import pl.Millionaires.Application.webclient.MillionairesClient;
 @Service
 @RequiredArgsConstructor
 public class MillionairesService {
-//    private final MillionairesClient millionairesClient;
-//
-//    public ApiModel getQuestion(){
-//        return millionairesClient.getQuestion("easy");
-//    }
+    private final MillionairesClient millionairesClient;
+
+    public ApiModel getQuestion(){
+        return millionairesClient.getQuestion("easy");
+    }
 }

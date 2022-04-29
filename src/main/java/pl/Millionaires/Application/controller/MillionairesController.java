@@ -1,13 +1,18 @@
 package pl.Millionaires.Application.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.Millionaires.Application.webclient.MillionairesClient;
+import org.springframework.web.bind.annotation.RestController;
+import pl.Millionaires.Application.model.ApiModel;
+import pl.Millionaires.Application.service.MillionairesService;
 
+@RestController
+@RequiredArgsConstructor
 public class MillionairesController {
-    private MillionairesClient millionairesClient;
+    private final MillionairesService millionairesService;
 
     @GetMapping("/question")
-    public void showQuestion(){
-        millionairesClient.getQuestion("easy");
+    public ApiModel getQuestion(){
+        return millionairesService.getQuestion();
     }
 }
